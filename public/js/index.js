@@ -11,3 +11,5 @@ var socket = io();
     socket.on('newMessage', function(message){
         console.log("newMessage", message);
     });
+
+    JQuery('#message-form');
