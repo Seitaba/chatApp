@@ -12,4 +12,10 @@ var socket = io();
         console.log("newMessage", message);
     });
 
-    JQuery('#message-form');
+    $('#message-form').on('submit', function(event){
+        event.preventDefault();
+        socket.emit('createMessage', {
+            from: 'User',
+            text: $('[name=message]').val()
+        });
+    });
