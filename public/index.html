@@ -4,15 +4,28 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Chat Application</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-    <h1>Welcome to the Chat App</h1>
+<body class="chat">
 
-    <form id="message-form">
-        <input name="message" type="text" placeholder="type your message here...">
-        <button>Send</button>
-    </form>
+    <div class="chat__sidebar">
+        <h3>People</h3>
+        <div class="users"></div>
+    </div>
+
+    <div class="chat__main">
+        <ol id="messages" class="chat__messages"></ol>
+
+        <div class="chat__footer">
+            <form id="message-form">
+                <input name="message" type="text" placeholder="message" autofocus autocomplete="off">
+                <button>Send</button>
+           </form>
+        </div>
+    </div>
+
+
 
     <script  src="/socket.io/socket.io.js"></script>
     <script  src="./js/libs/jquery-3.3.1.min.js"></script>

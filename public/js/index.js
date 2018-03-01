@@ -9,13 +9,21 @@ var socket = io();
     });
 
     socket.on('newMessage', function(message){
-        console.log("newMessage", message);
+        var li = $('<li></li>');
+        li.text(`${ message.from } : ${ message.text }`);
+
+        $('#messages').append(li);
     });
 
     $('#message-form').on('submit', function(event){
         event.preventDefault();
+
+        var messageTextBox = $('[name=message]');
+
         socket.emit('createMessage', {
             from: 'User',
-            text: $('[name=message]').val()
+            text: messageTextBox.val()
+        }, function(){
+            messageTextBox.val('');
         });
     });
