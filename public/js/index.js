@@ -9,10 +9,14 @@ var socket = io();
     });
 
     socket.on('newMessage', function(message){
-        var li = $('<li></li>');
-        li.text(`${ message.from } : ${ message.text }`);
-
-        $('#messages').append(li);
+        var formatTime = moment(message.createdAt).format('k:mm');
+        var template = $('#message__template').html();
+        var html = Mustache.render(template, {
+            text: message.text,
+            from: message.from,
+            createdAt: formatTime
+        });
+        $('#messages').append(html);
     });
 
     $('#message-form').on('submit', function(event){
